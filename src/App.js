@@ -1,5 +1,5 @@
 import "./App.css";
-import Slideshow from "./components/Slideshow";
+import Slideshow from "./components/Slideshow"
 
 function App() {
   return (

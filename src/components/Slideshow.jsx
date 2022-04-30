@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import "./Slideshow.css";
+import image1 from "./images/img1.jpg"
+import image2 from "./images/img2.jpg"
+import image3 from "./images/img3.jpg"
+import image4 from "./images/img4.jpg"
+import image5 from "./images/img5.jpg"
 
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-const delay = 2500;
+const images = [
+  {image: image1 },
+  {image: image2 },
+  {image: image3 },
+  {image: image4 },
+  {image:image5 }]
+const delay = 3000;
 
 const Slideshow = () => {
   const [index, setIndex] = useState(0);
@@ -18,7 +28,7 @@ const Slideshow = () => {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -33,12 +43,12 @@ const Slideshow = () => {
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {colors.map((backgroundColor, index) => (
-          <div className="slide" key={index} style={{ backgroundColor }} />
+        {images.map((image, index) => (
+          <img className="slide" src={image.image} alt="bird image"/>
         ))}
       </div>
       <div className="slideshowDots">
-        {colors.map((_, idx) => (
+        {images.map((_, idx) => (
           <div
             key={idx}
             className={`slideshowDot${index === idx ? " active" : ""}`}
